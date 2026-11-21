@@ -1,0 +1,32 @@
+{
+  "log": {
+    "error": "/var/log/conspiracy-ray/error.log",
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "tag": "{{GRPC_TAG}}",
+      "listen": "0.0.0.0",
+      "port": {{GRPC_PORT}},
+      "protocol": "vless",
+      "settings": {
+        "clients": [{ "id": "{{GRPC_UUID}}" }],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "grpcSettings": { "serviceName": "{{GRPC_SERVICE_NAME}}", "multiMode": false },
+        "realitySettings": {
+          "show": false,
+          "target": "{{REALITY_TARGET}}",
+          "xver": 0,
+          "serverNames": ["{{REALITY_SERVER_NAME}}"],
+          "privateKey": "{{GRPC_PRIVATE_KEY}}",
+          "shortIds": ["{{GRPC_SHORT_ID}}"]
+        }
+      }
+    }
+  ],
+  "outbounds": [{ "tag": "direct", "protocol": "freedom" }]
+}

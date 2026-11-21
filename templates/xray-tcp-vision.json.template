@@ -1,0 +1,33 @@
+{
+  "log": {
+    "error": "/var/log/conspiracy-ray/error.log",
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "tag": "{{TCP_TAG}}",
+      "listen": "0.0.0.0",
+      "port": {{TCP_PORT}},
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          { "id": "{{TCP_UUID}}", "flow": "xtls-rprx-vision" }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "show": false,
+          "target": "{{REALITY_TARGET}}",
+          "xver": 0,
+          "serverNames": ["{{REALITY_SERVER_NAME}}"],
+          "privateKey": "{{TCP_PRIVATE_KEY}}",
+          "shortIds": ["{{TCP_SHORT_ID}}"]
+        }
+      }
+    }
+  ],
+  "outbounds": [{ "tag": "direct", "protocol": "freedom" }]
+}

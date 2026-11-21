@@ -1,0 +1,21 @@
+mode: rule
+proxies:
+  - name: VLESS-TCP
+    type: vless
+    server: {{ENDPOINT}}
+    port: {{TCP_PORT}}
+    uuid: {{TCP_UUID}}
+    network: tcp
+    flow: {{TCP_FLOW}}
+    tls: true
+    servername: {{REALITY_SERVER_NAME}}
+    client-fingerprint: {{TCP_FINGERPRINT}}
+    reality-opts:
+      public-key: {{TCP_PUBLIC_KEY}}
+      short-id: {{TCP_SHORT_ID}}
+proxy-groups:
+  - name: VPN
+    type: select
+    proxies: [VLESS-TCP]
+rules:
+  - MATCH,VPN

@@ -1,0 +1,22 @@
+mode: rule
+proxies:
+  - name: VLESS-GRPC
+    type: vless
+    server: {{ENDPOINT}}
+    port: {{GRPC_PORT}}
+    uuid: {{GRPC_UUID}}
+    network: grpc
+    grpc-opts:
+      grpc-service-name: {{GRPC_SERVICE_NAME}}
+    tls: true
+    servername: {{REALITY_SERVER_NAME}}
+    client-fingerprint: {{GRPC_FINGERPRINT}}
+    reality-opts:
+      public-key: {{GRPC_PUBLIC_KEY}}
+      short-id: {{GRPC_SHORT_ID}}
+proxy-groups:
+  - name: VPN
+    type: select
+    proxies: [VLESS-GRPC]
+rules:
+  - MATCH,VPN

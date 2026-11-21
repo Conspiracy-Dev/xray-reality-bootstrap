@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "endpoint": "vpn.example.org",
+  "reality": {
+    "target": "target.example.net:443",
+    "server_name": "target.example.net"
+  },
+  "tcp": {
+    "tag": "vless-reality-tcp",
+    "port": 443,
+    "flow": "xtls-rprx-vision",
+    "fingerprint": "chrome"
+  },
+  "grpc": {
+    "tag": "vless-reality-grpc",
+    "port": 34241,
+    "service_name": "auth",
+    "fingerprint": "firefox"
+  }
+}

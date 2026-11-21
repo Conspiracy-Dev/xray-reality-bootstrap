@@ -1,0 +1,18 @@
+{
+  "type": "vless",
+  "tag": "{{GRPC_TAG}}",
+  "server": "{{ENDPOINT}}",
+  "server_port": {{GRPC_PORT}},
+  "uuid": "{{GRPC_UUID}}",
+  "tls": {
+    "enabled": true,
+    "server_name": "{{REALITY_SERVER_NAME}}",
+    "utls": { "enabled": true, "fingerprint": "{{GRPC_FINGERPRINT}}" },
+    "reality": {
+      "enabled": true,
+      "public_key": "{{GRPC_PUBLIC_KEY}}",
+      "short_id": "{{GRPC_SHORT_ID}}"
+    }
+  },
+  "transport": { "type": "grpc", "service_name": "{{GRPC_SERVICE_NAME}}" }
+}

@@ -1,0 +1,26 @@
+services:
+  xray:
+    image: ghcr.io/xtls/xray-core:26.3.27@sha256:592ec4d11f656db95598d01e76dbcc6e002d67360b96a5436500a938230f52c7
+    command: ["run", "-config", "/run/conspiracy-ray/server.json"]
+    user: "65532:65532"
+    restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    sysctls:
+      net.ipv4.ip_unprivileged_port_start: "443"
+    ports:
+      - "0.0.0.0:443:443/tcp"
+      - "0.0.0.0:34241:34241/tcp"
+    volumes:
+      - type: bind
+        source: ${VPN_CONFIG_FILE:?Set VPN_CONFIG_FILE to the absolute server JSON path}
+        target: /run/conspiracy-ray/server.json
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${VPN_LOG_DIR:?Set VPN_LOG_DIR to the absolute Xray log directory}
+        target: /var/log/conspiracy-ray
+        bind:
+          create_host_path: false

@@ -1,0 +1,18 @@
+{
+  "type": "vless",
+  "tag": "{{TCP_TAG}}",
+  "server": "{{ENDPOINT}}",
+  "server_port": {{TCP_PORT}},
+  "uuid": "{{TCP_UUID}}",
+  "flow": "xtls-rprx-vision",
+  "tls": {
+    "enabled": true,
+    "server_name": "{{REALITY_SERVER_NAME}}",
+    "utls": { "enabled": true, "fingerprint": "{{TCP_FINGERPRINT}}" },
+    "reality": {
+      "enabled": true,
+      "public_key": "{{TCP_PUBLIC_KEY}}",
+      "short_id": "{{TCP_SHORT_ID}}"
+    }
+  }
+}
